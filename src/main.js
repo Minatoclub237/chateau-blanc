@@ -106,8 +106,54 @@ function toggleCalendar(type) {
   }
 }
 
-document.querySelectorAll('.date-btn').forEach((btn) => {
+document.querySelectorAll('.date-btn[data-cal]').forEach((btn) => {
   btn.addEventListener('click', () => toggleCalendar(btn.dataset.cal));
+});
+
+// Sélecteur de personnes (1 à 10)
+const guestsBtn = document.getElementById('guests-btn');
+const guestsDropdown = document.getElementById('guests-dropdown');
+const guestsLabel = document.getElementById('guests-label');
+const chevronGuests = document.getElementById('chevron-guests');
+let guestCount = 2;
+
+for (let n = 1; n <= 10; n++) {
+  const opt = document.createElement('button');
+  opt.className = 'guest-option' + (n === guestCount ? ' selected' : '');
+  opt.setAttribute('role', 'option');
+  opt.textContent = n + (n > 1 ? ' personnes' : ' personne');
+  opt.addEventListener('click', () => {
+    guestCount = n;
+    guestsLabel.textContent = opt.textContent;
+    guestsDropdown.querySelectorAll('.guest-option').forEach((o) => o.classList.remove('selected'));
+    opt.classList.add('selected');
+    closeGuests();
+  });
+  guestsDropdown.appendChild(opt);
+}
+
+function closeGuests() {
+  guestsDropdown.classList.remove('visible');
+  guestsBtn.classList.remove('open');
+  guestsBtn.setAttribute('aria-expanded', 'false');
+  chevronGuests.classList.remove('rotated');
+}
+
+guestsBtn.addEventListener('click', () => {
+  const isOpen = guestsDropdown.classList.contains('visible');
+  if (isOpen) {
+    closeGuests();
+  } else {
+    if (openCalendar) toggleCalendar(openCalendar); // ferme un calendrier ouvert
+    guestsDropdown.classList.add('visible');
+    guestsBtn.classList.add('open');
+    guestsBtn.setAttribute('aria-expanded', 'true');
+    chevronGuests.classList.add('rotated');
+  }
+});
+
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.guest-pill')) closeGuests();
 });
 
 /* ============ Galeries des chambres ============ */
@@ -195,6 +241,101 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowLeft') stepPhoto(-1);
   if (e.key === 'ArrowRight') stepPhoto(1);
 });
+
+/* ============ Témoignages (carrousel) ============ */
+// Sélection d'avis Google authentiques (4-5★) — lien "Voir tous les avis"
+// vers la fiche Google pour la transparence.
+const reviews = [
+  {
+    name: 'Clarisse Bochet',
+    when: 'il y a une semaine',
+    stars: 5,
+    text: 'Nouveau propriétaire et très sympa. Très bon rapport qualité-prix. Chambre et salle de bain propres. Petit déjeuner à disposition.',
+  },
+  {
+    name: 'Sylvain Desmarais',
+    when: 'novembre 2023',
+    stars: 5,
+    text: 'Là pour une nuit, nous avons trouvé un accueil des plus chaleureux. Les gérants sont d\'une gentillesse et d\'une amabilité rare à trouver. Tout est là pour prendre soin de vous.',
+  },
+  {
+    name: 'Hocine Hammaci',
+    when: 'mars 2023',
+    stars: 5,
+    text: 'Accueil très sympathique et souriant et surtout très professionnel. J\'ai séjourné 2 nuits et repas, tout était parfait ! Personnel à l\'écoute, nourriture de qualité.',
+  },
+  {
+    name: 'Agnès C.',
+    when: 'avril 2023',
+    stars: 4,
+    text: 'On ne peut que dire bravo à ce couple charmant qui vient de reprendre cet établissement, plein de projets, qui sait réserver un accueil parfait à sa clientèle. Excellent petit-déjeuner très copieux.',
+  },
+  {
+    name: 'daniel fourché',
+    when: 'sur Google',
+    stars: 5,
+    text: 'Un accueil de qualité, le proprio est très sympa et réactif, un petit jardin derrière et belle vue sur celui-ci depuis la chambre. Cet hôtel a beaucoup de charme, 2 nuits très agréables.',
+  },
+  {
+    name: 'marc lemaire',
+    when: 'août 2023',
+    stars: 4,
+    text: 'Nous avons réservé au Château Blanc 5 chambres afin d\'y loger notre famille pour un rassemblement d\'anniversaire. Un hébergement qui a su accueillir tout le monde.',
+  },
+];
+
+const testiCard = document.querySelector('.testi-card');
+const testiName = document.getElementById('testi-name');
+const testiWhen = document.getElementById('testi-when');
+const testiText = document.getElementById('testi-text');
+const testiStars = document.getElementById('testi-stars');
+const testiDots = document.getElementById('testi-dots');
+let reviewIndex = 0;
+let reviewTimer = null;
+
+reviews.forEach((_, i) => {
+  const dot = document.createElement('button');
+  dot.className = 'testi-dot' + (i === 0 ? ' active' : '');
+  dot.setAttribute('aria-label', 'Avis ' + (i + 1));
+  dot.addEventListener('click', () => goToReview(i));
+  testiDots.appendChild(dot);
+});
+
+function renderReview() {
+  const r = reviews[reviewIndex];
+  testiName.textContent = r.name;
+  testiWhen.textContent = r.when + ' · Google';
+  testiText.textContent = r.text;
+  testiStars.textContent = '★'.repeat(r.stars) + '☆'.repeat(5 - r.stars);
+  testiDots.querySelectorAll('.testi-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === reviewIndex);
+  });
+}
+
+function goToReview(i) {
+  reviewIndex = (i + reviews.length) % reviews.length;
+  testiCard.classList.add('fading');
+  testiStars.classList.add('fading');
+  setTimeout(() => {
+    renderReview();
+    testiCard.classList.remove('fading');
+    testiStars.classList.remove('fading');
+  }, 300);
+  restartReviewTimer();
+}
+
+function restartReviewTimer() {
+  clearInterval(reviewTimer);
+  reviewTimer = setInterval(() => goToReview(reviewIndex + 1), 7000);
+}
+
+document.getElementById('testi-prev').addEventListener('click', () => goToReview(reviewIndex - 1));
+document.getElementById('testi-next').addEventListener('click', () => goToReview(reviewIndex + 1));
+testiCard.addEventListener('mouseenter', () => clearInterval(reviewTimer));
+testiCard.addEventListener('mouseleave', restartReviewTimer);
+
+renderReview();
+restartReviewTimer();
 
 /* ============ Three.js atmospheric layer ============ */
 
@@ -331,6 +472,18 @@ if (!reduceMotion) {
       ease: 'power2.out',
       scrollTrigger: { trigger: el, start: 'top 80%', once: true },
     });
+  });
+
+  // Testimonials: head then card rise into view
+  // (.testi-stars est exclu : sa transition CSS du carrousel entre en
+  // conflit avec le tween GSAP et le laisse bloqué à opacity 0)
+  gsap.from('.testi-head, .testi-card, .testi-controls, .testi-link', {
+    y: 50,
+    opacity: 0,
+    duration: 0.9,
+    stagger: 0.12,
+    ease: 'power2.out',
+    scrollTrigger: { trigger: '.testimonials', start: 'top 70%', once: true },
   });
 
   // CTA: lines rise like the hero title

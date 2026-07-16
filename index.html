@@ -28,8 +28,7 @@
       </svg>
 
       <nav class="nav">
-        <a href="#locations">Destinations</a>
-        <a href="#experiences">Cabanes</a>
+        <a href="#locations">Chambres</a>
         <a href="#experiences">Expériences</a>
         <a href="#contact">Contact</a>
         <button class="btn-book">Réserver</button>
@@ -48,8 +47,7 @@
       </button>
 
       <div class="mobile-nav" id="mobile-nav">
-        <a href="#locations">Destinations</a>
-        <a href="#experiences">Cabanes</a>
+        <a href="#locations">Chambres</a>
         <a href="#experiences">Expériences</a>
         <a href="#contact">Contact</a>
         <button>Réserver</button>
@@ -62,8 +60,8 @@
         <!-- Left -->
         <div class="hero-left">
           <h1 class="hero-title">
-            <span>Refuges</span>
-            <span class="dim">parfaits</span>
+            <span>Séjours</span>
+            <span class="dim">paisibles</span>
           </h1>
 
           <div class="hero-bottom">
@@ -80,7 +78,7 @@
         </div>
 
         <!-- Right card -->
-        <div class="card-wrapper">
+        <div class="card-wrapper" id="reservation">
           <div class="reserve-card">
             <div class="card-blur"></div>
             <div class="card-tint"></div>
@@ -130,8 +128,13 @@
             </div>
 
             <div class="price-section">
-              <div class="price-row">
-                <span class="price-guests">2 à 5 pers.</span>
+              <div class="guest-pill">
+                <button class="date-btn" id="guests-btn" aria-haspopup="listbox" aria-expanded="false">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#515C62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  <span id="guests-label">2 personnes</span>
+                  <svg class="chevron" id="chevron-guests" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#515C62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="calendar-dropdown guests-dropdown" id="guests-dropdown" role="listbox" aria-label="Nombre de personnes"></div>
               </div>
               <button class="btn-reserve">Réserver</button>
             </div>
@@ -217,42 +220,74 @@
     </div>
 
     <div class="exp-row">
-      <figure class="exp-media"><img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1400&q=80" alt="Rayons de soleil à travers les grands arbres de la forêt" loading="lazy" /></figure>
+      <figure class="exp-media"><img src="/media/experiences/wifi.webp" alt="Salon commun élégant aux rideaux dorés, ouvert sur le jardin" loading="lazy" /></figure>
       <div class="exp-copy">
         <span class="exp-num">/ 01</span>
-        <h3>Bain de forêt aux premières lueurs</h3>
-        <p>Marches guidées privées à travers les pins centenaires — sans téléphone, sans balisage, juste le son de vos pas qui s'adoucit.</p>
+        <h3>Wi-Fi gratuit dans toutes les chambres</h3>
+        <p>Restez connecté sans compter : le Wi-Fi haut débit est offert dans toutes les chambres et les espaces communs — du salon aux moulures d'époque jusqu'à la terrasse côté jardin.</p>
       </div>
     </div>
 
     <div class="exp-row reverse">
-      <figure class="exp-media"><img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=1400&q=80" alt="Cabane en bois entourée d'arbres" loading="lazy" /></figure>
+      <figure class="exp-media"><img src="/media/experiences/transports.webp" alt="Vue du quartier depuis l'hôtel, arrêt de transports à proximité" loading="lazy" /></figure>
       <div class="exp-copy">
         <span class="exp-num">/ 02</span>
-        <h3>Soirées au feu de bois</h3>
-        <p>Chaque nid dispose d'un bain nordique en cèdre et d'un brasero approvisionné pour la semaine. Le dîner arrive dans un panier au crépuscule — vous faites le reste.</p>
+        <h3>À 640 m des transports en commun</h3>
+        <p>L'arrêt le plus proche est à 640 m à pied. Rejoignez le centre de Rouen, ses stations et le Parc des expositions sans toucher à la voiture — elle vous attend au parking privé gratuit.</p>
       </div>
     </div>
 
     <div class="exp-row">
-      <figure class="exp-media"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1400&q=80" alt="Sommet spectaculaire au-dessus des nuages" loading="lazy" /></figure>
+      <figure class="exp-media"><img src="/media/experiences/petit-dejeuner.webp" alt="Salle de petit déjeuner aux tables nappées de blanc" loading="lazy" /></figure>
       <div class="exp-copy">
         <span class="exp-num">/ 03</span>
-        <h3>Matins de sommet</h3>
-        <p>Demandez à votre hôte l'itinéraire du lever de soleil. Thermos de café inclus. La vue depuis le sommet n'appartient qu'à vous avant 8 h.</p>
+        <h3>Petit déjeuner</h3>
+        <p>Chaque matin, notre salle lumineuse vous accueille pour un petit déjeuner à la française : viennoiseries, café chaud, jus et confitures — de quoi commencer la journée du bon pied.</p>
       </div>
     </div>
   </section>
 
+  <!-- ============ TESTIMONIALS ============ -->
+  <section class="testimonials" id="avis">
+    <div class="testi-head">
+      <span class="testi-script">Guest</span>
+      <h2 class="testi-heading">Testimonial</h2>
+    </div>
+
+    <div class="testi-card">
+      <span class="testi-quote tq-open" aria-hidden="true">&ldquo;</span>
+      <span class="testi-quote tq-close" aria-hidden="true">&rdquo;</span>
+
+      <div class="testi-google" aria-label="Avis Google">
+        <span class="g-word"><span class="g-b">G</span><span class="g-r">o</span><span class="g-y">o</span><span class="g-b">g</span><span class="g-g">l</span><span class="g-r">e</span></span>
+        <span class="g-reviews">Reviews <span class="g-stars">★★★★★</span></span>
+      </div>
+
+      <p class="testi-name" id="testi-name"></p>
+      <p class="testi-when" id="testi-when"></p>
+      <blockquote class="testi-text" id="testi-text"></blockquote>
+    </div>
+
+    <div class="testi-stars" id="testi-stars" aria-label="Note de l'avis"></div>
+
+    <div class="testi-controls">
+      <button class="testi-arrow" id="testi-prev" aria-label="Avis précédent">&#8249;</button>
+      <div class="testi-dots" id="testi-dots"></div>
+      <button class="testi-arrow" id="testi-next" aria-label="Avis suivant">&#8250;</button>
+    </div>
+
+    <a class="testi-link" href="https://share.google/5gz1ryVD2AI7jVG6C" target="_blank" rel="noopener">Voir tous les avis &rarr;</a>
+  </section>
+
   <!-- ============ CTA / FOOTER ============ -->
   <section class="cta" id="contact">
-    <h2 class="cta-title"><span>Votre nid</span><span class="em">vous attend.</span></h2>
+    <h2 class="cta-title"><span>Votre séjour</span><span class="em">vous attend.</span></h2>
     <button class="btn-book cta-btn">Réserver</button>
 
     <footer class="footer">
       <span>© 2026 Hôtel du Château Blanc</span>
       <nav>
-        <a href="#locations">Destinations</a>
+        <a href="#locations">Chambres</a>
         <a href="#experiences">Expériences</a>
         <a href="#hero">Haut de page</a>
       </nav>
