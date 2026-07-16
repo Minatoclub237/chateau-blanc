@@ -474,6 +474,17 @@ if (!reduceMotion) {
     });
   });
 
+  // Témoignages : effet rideau — la section recouvre les Expériences.
+  // On épingle les Expériences (sans espace ajouté) pendant que la
+  // section suivante glisse par-dessus.
+  ScrollTrigger.create({
+    trigger: '.experiences',
+    start: 'bottom bottom',
+    end: () => '+=' + window.innerHeight,
+    pin: true,
+    pinSpacing: false,
+  });
+
   // Testimonials: head then card rise into view
   // (.testi-stars est exclu : sa transition CSS du carrousel entre en
   // conflit avec le tween GSAP et le laisse bloqué à opacity 0)
@@ -496,11 +507,12 @@ if (!reduceMotion) {
     scrollTrigger: { trigger: '.cta', start: 'top 65%', once: true },
   });
 
-  gsap.from('.cta-btn', {
+  gsap.from('.cta-actions, .cta-address', {
     y: 30,
     opacity: 0,
     duration: 0.8,
     delay: 0.3,
+    stagger: 0.12,
     ease: 'power2.out',
     scrollTrigger: { trigger: '.cta', start: 'top 65%', once: true },
   });

@@ -679,6 +679,7 @@ img { max-width: 100%; display: block; }
 /* ============ Testimonials ============ */
 .testimonials {
   position: relative;
+  z-index: 2; /* passe au-dessus des Expériences épinglées (effet rideau) */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -871,9 +872,48 @@ img { max-width: 100%; display: block; }
   padding: 120px 65px 0;
   background:
     radial-gradient(ellipse 60% 50% at 50% 100%, rgba(255,179,63,0.1), transparent),
-    var(--pine);
+    linear-gradient(rgba(9, 13, 10, 0.82), rgba(9, 13, 10, 0.92)),
+    url('/media/experiences/wifi.webp') center / cover no-repeat;
   text-align: center;
 }
+
+.cta-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.btn-call {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 40px;
+  border: 1px solid rgba(255,255,255,0.45);
+  border-radius: 14px;
+  color: white;
+  font-size: 18px;
+  line-height: 24px;
+  text-decoration: none;
+  transition: border-color 0.18s ease-out, color 0.18s ease-out, transform 0.18s ease-out;
+}
+.btn-call:hover { border-color: var(--amber); color: var(--amber); transform: scale(1.04); }
+.btn-call:active { transform: scale(0.97); }
+
+.cta-address {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: -16px;
+  color: rgba(255,255,255,0.75);
+  font-size: 16px;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.25);
+  padding-bottom: 3px;
+  transition: color 0.15s, border-color 0.15s;
+}
+.cta-address:hover { color: var(--amber); border-color: var(--amber); }
 
 .cta-title {
   font-family: var(--font-display);
