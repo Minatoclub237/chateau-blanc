@@ -27,17 +27,37 @@ menuToggle.addEventListener('click', () => {
   closeIcon.style.display = isOpen ? 'none' : 'block';
 });
 
-// Calendar logic
+// Calendar logic — dates calculées automatiquement sur le mois courant
 const weekdays = ['Di', 'Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa'];
+
+function dateToCalendar(date) {
+  const y = date.getFullYear();
+  const m = date.getMonth();
+  return {
+    days: new Date(y, m + 1, 0).getDate(),
+    startBlanks: new Date(y, m, 1).getDay(),
+    selectedDay: date.getDate(),
+    label: date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' }),
+    monthTitle: date.toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' }).toUpperCase(),
+  };
+}
+
+const checkinDate = new Date(); // aujourd'hui
+const checkoutDate = new Date();
+checkoutDate.setDate(checkoutDate.getDate() + 7); // arrivée + 7 nuits
+
 const calendars = {
-  checkin: { days: 28, startBlanks: 6, selectedDay: 11 },
-  checkout: { days: 31, startBlanks: 6, selectedDay: 25 },
+  checkin: dateToCalendar(checkinDate),
+  checkout: dateToCalendar(checkoutDate),
 };
 
 function buildCalendar(type) {
   const grid = document.getElementById('cal-grid-' + type);
   const config = calendars[type];
   grid.innerHTML = '';
+
+  document.querySelector('#cal-' + type + ' .cal-month').textContent = config.monthTitle;
+  document.querySelector('#' + type + '-btn > span').textContent = config.label;
 
   weekdays.forEach((d) => {
     const span = document.createElement('span');
