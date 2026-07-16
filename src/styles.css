@@ -1142,6 +1142,18 @@ img { max-width: 100%; display: block; }
   .nav { display: none; }
   .mobile-menu-btn { display: block; }
   .hero-main { padding: 24px 16px 40px; }
+
+  /* Mobile : pas de paragraphe descriptif dans le hero */
+  .hero-desc { display: none; }
+
+  /* Mobile : carte de réservation entièrement transparente (sans blur),
+     lisibilité assurée par les text-shadows et les pilules assombries */
+  .card-blur, .card-tint { display: none; }
+  .reserve-card { padding: 24px 0; }
+  .cabin-title { text-shadow: 0 2px 10px rgba(0,0,0,0.8), 0 4px 24px rgba(0,0,0,0.6); }
+  .date-btn, .time-info { background: rgba(0,0,0,0.5); }
+  .date-btn:hover { background: rgba(0,0,0,0.6); }
+  .time-label { opacity: 0.75; }
   .manifesto { padding: 100px 16px; }
   .experiences { padding: 120px 16px; }
   .testimonials { padding: 100px 16px; }
