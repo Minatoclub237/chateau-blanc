@@ -863,6 +863,8 @@ img { max-width: 100%; display: block; }
 
 /* ============ CTA / Footer ============ */
 .cta {
+  position: relative;
+  overflow: hidden;
   min-height: 92vh;
   display: flex;
   flex-direction: column;
@@ -870,11 +872,35 @@ img { max-width: 100%; display: block; }
   justify-content: center;
   gap: 48px;
   padding: 120px 65px 0;
-  background:
-    radial-gradient(ellipse 60% 50% at 50% 100%, rgba(255,179,63,0.1), transparent),
-    linear-gradient(rgba(9, 13, 10, 0.82), rgba(9, 13, 10, 0.92)),
-    url('/media/experiences/wifi.webp') center / cover no-repeat;
+  background: var(--pine);
   text-align: center;
+}
+
+/* Vidéo de fond à 100% d'opacité — la lisibilité du texte est assurée
+   par les text-shadows, pas par un voile sombre sur la vidéo. */
+.cta-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.cta > :not(.cta-video) { position: relative; z-index: 1; }
+
+.cta-hotel-label {
+  color: white;
+  font-size: 14px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.8), 0 2px 20px rgba(0,0,0,0.6);
+  margin-bottom: -24px;
+}
+.cta-hotel-stars {
+  color: var(--amber);
+  letter-spacing: 0.15em;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.8);
 }
 
 .cta-actions {
@@ -901,16 +927,23 @@ img { max-width: 100%; display: block; }
 .btn-call:hover { border-color: var(--amber); color: var(--amber); transform: scale(1.04); }
 .btn-call:active { transform: scale(0.97); }
 
+.btn-call {
+  background: rgba(9, 13, 10, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
 .cta-address {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   margin-top: -16px;
-  color: rgba(255,255,255,0.75);
+  color: white;
   font-size: 16px;
   text-decoration: none;
-  border-bottom: 1px solid rgba(255,255,255,0.25);
+  border-bottom: 1px solid rgba(255,255,255,0.45);
   padding-bottom: 3px;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.8), 0 2px 16px rgba(0,0,0,0.6);
   transition: color 0.15s, border-color 0.15s;
 }
 .cta-address:hover { color: var(--amber); border-color: var(--amber); }
@@ -921,6 +954,7 @@ img { max-width: 100%; display: block; }
   font-size: clamp(52px, 9vw, 140px);
   line-height: 1;
   letter-spacing: -0.02em;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.75), 0 6px 40px rgba(0,0,0,0.55);
 }
 .cta-title span { display: block; }
 .cta-title .em { font-style: italic; color: var(--amber); }
@@ -946,6 +980,11 @@ img { max-width: 100%; display: block; }
   transition: color 0.15s;
 }
 .footer a:hover { color: white; }
+
+/* Sur la vidéo du CTA, le footer doit rester lisible */
+.cta .footer,
+.cta .footer a { color: rgba(255,255,255,0.85); text-shadow: 0 1px 5px rgba(0,0,0,0.8); }
+.cta .footer a:hover { color: var(--amber); }
 
 /* ============ Lightbox galerie ============ */
 .lightbox {

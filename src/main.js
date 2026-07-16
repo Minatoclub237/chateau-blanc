@@ -27,6 +27,26 @@ menuToggle.addEventListener('click', () => {
   closeIcon.style.display = isOpen ? 'none' : 'block';
 });
 
+// Tous les boutons "Réserver" (header, menu mobile, CTA final) ramènent
+// à la carte de réservation du hero
+function closeMobileNav() {
+  document.getElementById('mobile-nav').classList.remove('open');
+  document.getElementById('menu-icon').style.display = 'block';
+  document.getElementById('close-icon').style.display = 'none';
+}
+
+document.querySelectorAll('.btn-book, .mobile-nav button').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    closeMobileNav();
+    document.getElementById('reservation').scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+// Les liens du menu mobile referment le menu après navigation
+document.querySelectorAll('.mobile-nav a').forEach((link) => {
+  link.addEventListener('click', closeMobileNav);
+});
+
 // Calendar logic — dates calculées automatiquement sur le mois courant
 const weekdays = ['Di', 'Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa'];
 
@@ -507,7 +527,7 @@ if (!reduceMotion) {
     scrollTrigger: { trigger: '.cta', start: 'top 65%', once: true },
   });
 
-  gsap.from('.cta-actions, .cta-address', {
+  gsap.from('.cta-hotel-label, .cta-actions, .cta-address', {
     y: 30,
     opacity: 0,
     duration: 0.8,
