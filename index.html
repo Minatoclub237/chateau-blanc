@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="WoodNest — handpicked luxury cabins in breathtaking locations. Unplug, unwind, and reconnect with what matters most." />
-  <title>WoodNest | Nature's Perfect Hideaways</title>
+  <meta name="description" content="WoodNest — des cabanes de luxe soigneusement sélectionnées dans des lieux à couper le souffle. Débranchez, respirez et reconnectez-vous à l'essentiel." />
+  <title>WoodNest | Refuges parfaits en pleine nature</title>
 </head>
 <body>
   <!-- Three.js atmospheric layer (fireflies / forest dust) -->
@@ -13,7 +13,7 @@
   <!-- ============ HERO ============ -->
   <div class="hero" id="hero">
     <video class="hero-video" autoplay muted playsinline loop>
-      <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260620_140846_aef8cb19-5ec8-4b45-974b-020aed20f297.mp4" type="video/mp4" />
+      <source src="/media/hero.mp4" type="video/mp4" />
     </video>
 
     <!-- Header -->
@@ -28,11 +28,11 @@
       </svg>
 
       <nav class="nav">
-        <a href="#locations">Locations</a>
-        <a href="#experiences">Rooms</a>
-        <a href="#experiences">Experiences</a>
+        <a href="#locations">Destinations</a>
+        <a href="#experiences">Cabanes</a>
+        <a href="#experiences">Expériences</a>
         <a href="#contact">Contact</a>
-        <button class="btn-book">Book Now</button>
+        <button class="btn-book">Réserver</button>
       </nav>
 
       <button class="mobile-menu-btn" id="menu-toggle" aria-label="Menu">
@@ -48,11 +48,11 @@
       </button>
 
       <div class="mobile-nav" id="mobile-nav">
-        <a href="#locations">Locations</a>
-        <a href="#experiences">Rooms</a>
-        <a href="#experiences">Experiences</a>
+        <a href="#locations">Destinations</a>
+        <a href="#experiences">Cabanes</a>
+        <a href="#experiences">Expériences</a>
         <a href="#contact">Contact</a>
-        <button>Book Now</button>
+        <button>Réserver</button>
       </div>
     </header>
 
@@ -62,20 +62,20 @@
         <!-- Left -->
         <div class="hero-left">
           <h1 class="hero-title">
-            <span>Nature's</span>
-            <span class="dim">Perfect</span>
-            <span>Hideaways</span>
+            <span>Refuges</span>
+            <span class="dim">parfaits</span>
+            <span>en pleine nature</span>
           </h1>
 
           <div class="hero-bottom">
-            <p class="hero-desc">Discover handpicked luxury cabins in breathtaking locations. Unplug, unwind, and reconnect with what matters most.</p>
+            <p class="hero-desc">Découvrez des cabanes de luxe soigneusement sélectionnées dans des lieux à couper le souffle. Débranchez, respirez et reconnectez-vous à l'essentiel.</p>
 
             <div class="hero-rating">
               <div class="rating-row">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="#FFB33F"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <span class="rating-value">4.7</span>
+                <span class="rating-value">4,7</span>
               </div>
-              <span class="rating-caption"> from 1,800+ stays</span>
+              <span class="rating-caption"> sur plus de 1 800 séjours</span>
             </div>
           </div>
         </div>
@@ -87,7 +87,7 @@
             <div class="card-tint"></div>
 
             <div class="card-header">
-              <h2 class="cabin-title">Evergreen<br>Pine Family Lodge</h2>
+              <h2 class="cabin-title">Lodge familial<br>Evergreen Pine</h2>
               <div class="edit-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#BDC6C7" stroke-opacity="0.4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
@@ -100,11 +100,11 @@
               <div class="date-pill">
                 <button class="date-btn" id="checkin-btn" data-cal="checkin">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#515C62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                  <span>Feb 11</span>
+                  <span>11 févr.</span>
                   <svg class="chevron" id="chevron-checkin" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#515C62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                 </button>
                 <div class="calendar-dropdown" id="cal-checkin">
-                  <p class="cal-month">FEBRUARY 2025</p>
+                  <p class="cal-month">FÉVRIER 2025</p>
                   <div class="cal-grid" id="cal-grid-checkin"></div>
                 </div>
               </div>
@@ -112,33 +112,33 @@
               <div class="date-pill">
                 <button class="date-btn" id="checkout-btn" data-cal="checkout">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#515C62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                  <span>Mar 25</span>
+                  <span>25 mars</span>
                   <svg class="chevron" id="chevron-checkout" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#515C62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                 </button>
                 <div class="calendar-dropdown" id="cal-checkout">
-                  <p class="cal-month">MARCH 2025</p>
+                  <p class="cal-month">MARS 2025</p>
                   <div class="cal-grid" id="cal-grid-checkout"></div>
                 </div>
               </div>
             </div>
 
             <div class="time-info">
-              <span class="time-label left">Check-in</span>
-              <span class="time-value left">After 2:00 PM</span>
+              <span class="time-label left">Arrivée</span>
+              <span class="time-value left">À partir de 14 h</span>
               <div class="time-divider"></div>
-              <span class="time-label right">Check-out</span>
-              <span class="time-value right">Until 12:00 PM</span>
+              <span class="time-label right">Départ</span>
+              <span class="time-value right">Jusqu'à 12 h</span>
             </div>
 
             <div class="price-section">
               <div class="price-row">
                 <div>
-                  <span class="price-amount">$359</span>
-                  <span class="price-unit">/night</span>
+                  <span class="price-amount">359 €</span>
+                  <span class="price-unit">/nuit</span>
                 </div>
-                <span class="price-guests">2-5 guests</span>
+                <span class="price-guests">2 à 5 pers.</span>
               </div>
-              <button class="btn-reserve">Reserve</button>
+              <button class="btn-reserve">Réserver</button>
             </div>
           </div>
         </div>
@@ -146,18 +146,18 @@
     </main>
 
     <div class="scroll-hint" aria-hidden="true">
-      <span>Scroll</span>
+      <span>Défiler</span>
       <div class="scroll-line"></div>
     </div>
   </div>
 
   <!-- ============ MANIFESTO ============ -->
   <section class="manifesto" id="manifesto">
-    <p class="manifesto-eyebrow">The WoodNest Promise</p>
+    <p class="manifesto-eyebrow">La promesse WoodNest</p>
     <h2 class="manifesto-text">
-      <span class="w">Escape</span> <span class="w">the</span> <span class="w">noise.</span>
-      <span class="w em">Sleep</span> <span class="w em">under</span> <span class="w em">a</span> <span class="w em">thousand</span> <span class="w em">stars.</span>
-      <span class="w">Wake</span> <span class="w">up</span> <span class="w">where</span> <span class="w">the</span> <span class="w">forest</span> <span class="w">breathes.</span>
+      <span class="w">Échappez</span> <span class="w">au</span> <span class="w">bruit.</span>
+      <span class="w em">Dormez</span> <span class="w em">sous</span> <span class="w em">mille</span> <span class="w em">étoiles.</span>
+      <span class="w">Réveillez-vous</span> <span class="w">là</span> <span class="w">où</span> <span class="w">la</span> <span class="w">forêt</span> <span class="w">respire.</span>
     </h2>
   </section>
 
@@ -165,48 +165,48 @@
   <section class="locations" id="locations">
     <div class="locations-track">
       <div class="locations-intro">
-        <p class="section-eyebrow">Handpicked Locations</p>
-        <h2 class="section-title">Four<br><em>wild</em><br>corners</h2>
-        <p class="section-sub">Every nest is scouted on foot, tested in every season, and kept far from the crowd.</p>
+        <p class="section-eyebrow">Lieux d'exception</p>
+        <h2 class="section-title">Quatre<br>coins<br><em>sauvages</em></h2>
+        <p class="section-sub">Chaque nid est repéré à pied, testé en toutes saisons et tenu loin de la foule.</p>
       </div>
 
       <article class="loc-card">
-        <div class="loc-media"><img src="https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?auto=format&fit=crop&w=1400&q=80" alt="Cabin nestled in an evergreen forest" loading="lazy" /></div>
+        <div class="loc-media"><img src="https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?auto=format&fit=crop&w=1400&q=80" alt="Cabane nichée dans une forêt de conifères" loading="lazy" /></div>
         <div class="loc-meta">
           <span class="loc-index">01</span>
           <h3>Evergreen Pine Lodge</h3>
-          <p>Cascade Range · Oregon</p>
-          <span class="loc-price">from $359 /night</span>
+          <p>Chaîne des Cascades · Oregon</p>
+          <span class="loc-price">dès 359 € /nuit</span>
         </div>
       </article>
 
       <article class="loc-card">
-        <div class="loc-media"><img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1400&q=80" alt="Lakeside cabin at dusk with mountain backdrop" loading="lazy" /></div>
+        <div class="loc-media"><img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1400&q=80" alt="Cabane au bord d'un lac au crépuscule, montagnes en toile de fond" loading="lazy" /></div>
         <div class="loc-meta">
           <span class="loc-index">02</span>
           <h3>Mirror Lake Hideout</h3>
-          <p>Banff Country · Alberta</p>
-          <span class="loc-price">from $429 /night</span>
+          <p>Pays de Banff · Alberta</p>
+          <span class="loc-price">dès 429 € /nuit</span>
         </div>
       </article>
 
       <article class="loc-card">
-        <div class="loc-media"><img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1400&q=80" alt="Starry night sky over snowy mountain peaks" loading="lazy" /></div>
+        <div class="loc-media"><img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1400&q=80" alt="Ciel étoilé au-dessus de sommets enneigés" loading="lazy" /></div>
         <div class="loc-meta">
           <span class="loc-index">03</span>
           <h3>Aurora Ridge Dome</h3>
-          <p>Tromsø Fjords · Norway</p>
-          <span class="loc-price">from $512 /night</span>
+          <p>Fjords de Tromsø · Norvège</p>
+          <span class="loc-price">dès 512 € /nuit</span>
         </div>
       </article>
 
       <article class="loc-card">
-        <div class="loc-media"><img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=1400&q=80" alt="Misty mountain ridges at sunrise" loading="lazy" /></div>
+        <div class="loc-media"><img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=1400&q=80" alt="Crêtes montagneuses dans la brume au lever du soleil" loading="lazy" /></div>
         <div class="loc-meta">
           <span class="loc-index">04</span>
           <h3>Cloudline Treehouse</h3>
           <p>Great Smokies · Tennessee</p>
-          <span class="loc-price">from $389 /night</span>
+          <span class="loc-price">dès 389 € /nuit</span>
         </div>
       </article>
     </div>
@@ -215,51 +215,51 @@
   <!-- ============ EXPERIENCES ============ -->
   <section class="experiences" id="experiences">
     <div class="exp-head">
-      <p class="section-eyebrow">Experiences</p>
-      <h2 class="section-title">Days that <em>slow down</em></h2>
+      <p class="section-eyebrow">Expériences</p>
+      <h2 class="section-title">Des journées qui <em>ralentissent</em></h2>
     </div>
 
     <div class="exp-row">
-      <figure class="exp-media"><img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1400&q=80" alt="Sunlight streaming through tall forest trees" loading="lazy" /></figure>
+      <figure class="exp-media"><img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1400&q=80" alt="Rayons de soleil à travers les grands arbres de la forêt" loading="lazy" /></figure>
       <div class="exp-copy">
         <span class="exp-num">/ 01</span>
-        <h3>Forest bathing at first light</h3>
-        <p>Private guided walks through old-growth pine — no phones, no trail markers, just the sound of your own footsteps softening.</p>
+        <h3>Bain de forêt aux premières lueurs</h3>
+        <p>Marches guidées privées à travers les pins centenaires — sans téléphone, sans balisage, juste le son de vos pas qui s'adoucit.</p>
       </div>
     </div>
 
     <div class="exp-row reverse">
-      <figure class="exp-media"><img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=1400&q=80" alt="Wooden cabin surrounded by trees" loading="lazy" /></figure>
+      <figure class="exp-media"><img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=1400&q=80" alt="Cabane en bois entourée d'arbres" loading="lazy" /></figure>
       <div class="exp-copy">
         <span class="exp-num">/ 02</span>
-        <h3>Wood-fired evenings</h3>
-        <p>Every nest has a cedar hot tub and a fire pit stocked for the week. Dinner arrives in a basket at dusk — you do the rest.</p>
+        <h3>Soirées au feu de bois</h3>
+        <p>Chaque nid dispose d'un bain nordique en cèdre et d'un brasero approvisionné pour la semaine. Le dîner arrive dans un panier au crépuscule — vous faites le reste.</p>
       </div>
     </div>
 
     <div class="exp-row">
-      <figure class="exp-media"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1400&q=80" alt="Dramatic mountain peak above the clouds" loading="lazy" /></figure>
+      <figure class="exp-media"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1400&q=80" alt="Sommet spectaculaire au-dessus des nuages" loading="lazy" /></figure>
       <div class="exp-copy">
         <span class="exp-num">/ 03</span>
-        <h3>Summit mornings</h3>
-        <p>Ask your host for the sunrise route. Thermos of coffee included. The view from the top is yours alone before 8 a.m.</p>
+        <h3>Matins de sommet</h3>
+        <p>Demandez à votre hôte l'itinéraire du lever de soleil. Thermos de café inclus. La vue depuis le sommet n'appartient qu'à vous avant 8 h.</p>
       </div>
     </div>
   </section>
 
   <!-- ============ CTA / FOOTER ============ -->
   <section class="cta" id="contact">
-    <h2 class="cta-title"><span>Your nest</span><span class="em">is waiting.</span></h2>
-    <button class="btn-book cta-btn">Book Now</button>
+    <h2 class="cta-title"><span>Votre nid</span><span class="em">vous attend.</span></h2>
+    <button class="btn-book cta-btn">Réserver</button>
 
     <footer class="footer">
       <span>© 2026 WoodNest</span>
       <nav>
-        <a href="#locations">Locations</a>
-        <a href="#experiences">Experiences</a>
-        <a href="#hero">Top</a>
+        <a href="#locations">Destinations</a>
+        <a href="#experiences">Expériences</a>
+        <a href="#hero">Haut de page</a>
       </nav>
-      <span>4.7 ★ from 1,800+ stays</span>
+      <span>4,7 ★ sur plus de 1 800 séjours</span>
     </footer>
   </section>
 

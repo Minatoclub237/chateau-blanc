@@ -28,7 +28,7 @@ menuToggle.addEventListener('click', () => {
 });
 
 // Calendar logic
-const weekdays = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+const weekdays = ['Di', 'Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa'];
 const calendars = {
   checkin: { days: 28, startBlanks: 6, selectedDay: 11 },
   checkout: { days: 31, startBlanks: 6, selectedDay: 25 },
