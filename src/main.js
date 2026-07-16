@@ -366,18 +366,25 @@ initFireflies(document.getElementById('fx-canvas'));
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 if (!reduceMotion) {
-  // Hero video: slow cinematic zoom + darken as it scrolls away
-  gsap.to('.hero-video', {
-    scale: 1.18,
-    filter: 'brightness(0.55)',
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '.hero',
-      start: 'top top',
-      end: 'bottom top',
-      scrub: true,
-    },
-  });
+  // Hero video: slow cinematic zoom + darken as it scrolls away.
+  // fromTo obligatoire : le filter initial est "none", que GSAP
+  // interprète comme brightness(0) — la vidéo devenait noire dès
+  // le début du scroll. On part de 1 et on ne descend qu'à 0.75
+  // pour que la vidéo reste visible pendant tout le défilement.
+  gsap.fromTo('.hero-video',
+    { scale: 1, filter: 'brightness(1)' },
+    {
+      scale: 1.18,
+      filter: 'brightness(0.75)',
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true,
+      },
+    }
+  );
 
   // Manifesto: words light up one by one, scrubbed
   gsap.to('.manifesto-text .w', {
