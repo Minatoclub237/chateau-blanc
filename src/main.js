@@ -110,6 +110,92 @@ document.querySelectorAll('.date-btn').forEach((btn) => {
   btn.addEventListener('click', () => toggleCalendar(btn.dataset.cal));
 });
 
+/* ============ Galeries des chambres ============ */
+// Ajouter ici les photos fournies par catégorie — le compteur "X photos"
+// des cartes se met à jour automatiquement.
+const galleries = {
+  double: {
+    title: 'Chambre Double',
+    photos: ['/media/rooms/double.webp'],
+  },
+  twin: {
+    title: 'Chambre Twin',
+    photos: ['/media/rooms/twin.webp'],
+  },
+  triple: {
+    title: 'Chambre Triple Supérieure',
+    photos: ['/media/rooms/triple.webp'],
+  },
+  quadruple: {
+    title: 'Chambre Quadruple Supérieure',
+    photos: ['/media/rooms/quadruple.webp'],
+  },
+};
+
+// Compteurs de photos sur les cartes
+document.querySelectorAll('.photo-count').forEach((el) => {
+  const n = galleries[el.dataset.count].photos.length;
+  el.textContent = n + (n > 1 ? ' photos' : ' photo');
+});
+
+// Lightbox
+const lightbox = document.getElementById('lightbox');
+const lbImg = document.getElementById('lb-img');
+const lbTitle = document.getElementById('lb-title');
+const lbCounter = document.getElementById('lb-counter');
+let currentGallery = null;
+let currentIndex = 0;
+
+function showPhoto() {
+  const g = galleries[currentGallery];
+  lbImg.src = g.photos[currentIndex];
+  lbImg.alt = g.title + ' — photo ' + (currentIndex + 1);
+  lbTitle.textContent = g.title;
+  lbCounter.textContent = ' — ' + (currentIndex + 1) + ' / ' + g.photos.length;
+}
+
+function openGallery(room) {
+  currentGallery = room;
+  currentIndex = 0;
+  showPhoto();
+  lightbox.hidden = false;
+  document.body.style.overflow = 'hidden';
+}
+
+function closeGallery() {
+  lightbox.hidden = true;
+  document.body.style.overflow = '';
+}
+
+function stepPhoto(dir) {
+  const g = galleries[currentGallery];
+  currentIndex = (currentIndex + dir + g.photos.length) % g.photos.length;
+  showPhoto();
+}
+
+document.querySelectorAll('.loc-card[data-room]').forEach((card) => {
+  card.addEventListener('click', () => openGallery(card.dataset.room));
+  card.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      openGallery(card.dataset.room);
+    }
+  });
+});
+
+lightbox.querySelector('.lb-close').addEventListener('click', closeGallery);
+lightbox.querySelector('.lb-prev').addEventListener('click', () => stepPhoto(-1));
+lightbox.querySelector('.lb-next').addEventListener('click', () => stepPhoto(1));
+lightbox.addEventListener('click', (e) => {
+  if (e.target === lightbox) closeGallery();
+});
+document.addEventListener('keydown', (e) => {
+  if (lightbox.hidden) return;
+  if (e.key === 'Escape') closeGallery();
+  if (e.key === 'ArrowLeft') stepPhoto(-1);
+  if (e.key === 'ArrowRight') stepPhoto(1);
+});
+
 /* ============ Three.js atmospheric layer ============ */
 
 initFireflies(document.getElementById('fx-canvas'));
